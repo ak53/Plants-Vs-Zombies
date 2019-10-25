@@ -1,6 +1,7 @@
-# Assembler
-A very basic implementation of a 2 pass assembler
-+ Things to handle:
- 1) address assigning - do not initialise the data address during reading, after end, assign the values of addresses
- 2) label identification - define your assumption
- 3) comment identification - define your assumption
+TODO
+main menu - new game, load game, exit
+new game - take name
+load game - take name, show saved files
+Lawn screen - lawn movers, plants menu, sun token count
+Lawn animation - plants shooting, zombie walking, zombie dying, sun tokens dropping and popping, zombie eating, huge wave of zombies approaching, lawn mover runs loose, zombie reaches house.
+pause menu - restart, save, exit to main menu, resume.
