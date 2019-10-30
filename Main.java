@@ -52,6 +52,8 @@ public class Main extends Application {
             NmCancel.setStyle("-fx-background-color:transparent;");
             NmCancel.setOnAction(e->{
                 System.out.println("Cancel selected");
+                stackPane.getChildren().remove(p2);
+
             });
             p2.getChildren().add(iv2);
             p2.getChildren().add(eName);
