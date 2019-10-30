@@ -23,7 +23,7 @@ public class Main extends Application {
 
             Pane p = new Pane();
 
-            Image image1 = new Image("file:MainMenu.jpg", 1350,700,false,false);
+            Image image1 = new Image("file:MainMenu.jpg", 1350,800,false,false);
             ImageView iv1 = new ImageView();
             iv1.setImage(image1);
             iv1.setPreserveRatio(true);
@@ -33,24 +33,24 @@ public class Main extends Application {
             Button ng = new Button("New Game");
             Button lg = new Button("Load Game");
             Button ex = new Button("Exit");
-            ng.setLayoutX(740);
+            ng.setLayoutX(720);
             ng.setLayoutY(245);
             ng.setStyle("-fx-background-color:transparent;");
-            ng.setPrefSize(400,70);
+            ng.setPrefSize(455,80);
             ng.setOnAction(e->{
                 System.out.println("New game selected");
             });
-            lg.setLayoutX(740);
-            lg.setLayoutY(340);
+            lg.setLayoutX(720);
+            lg.setLayoutY(350);
             lg.setStyle("-fx-background-color:transparent;");
-            lg.setPrefSize(400,60);
+            lg.setPrefSize(445,70);
             lg.setOnAction(e->{
                 System.out.println("Load game selected");
             });
-            ex.setLayoutX(740);
-            ex.setLayoutY(425);
+            ex.setLayoutX(730);
+            ex.setLayoutY(455);
             ex.setStyle("-fx-background-color:transparent;");
-            ex.setPrefSize(400,57);
+            ex.setPrefSize(400,60);
             ex.setOnAction(e->{
                 System.out.println("Exit selected");
             });
