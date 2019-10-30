@@ -15,60 +15,70 @@ import javafx.geometry.Pos;
 
 public class Main extends Application {
 
+    public void lawnbutton(Button b, double posx, double posy, double sx, double sy){
+        b.setLayoutX(posx);
+        b.setLayoutY(posy);
+        b.setPrefSize(sx,sy);
+        b.setStyle("-fx-background-color:transparent;");
+    }
+
     // launch the application
     public void start(Stage stage)
     {
         try {
-            StackPane stackPane = new StackPane(); //To display the scenes on top of each other
-            Pane p = new Pane(); //pane with 3 buttons (Main Menu)
-            Image image1 = new Image("Lawn.png", 1330,700,false,false);
+            StackPane stackPane = new StackPane();
+            Pane p = new Pane();
+            Image image1 = new Image("file:Lawn.png", 1330,700,false,false);
             ImageView iv1 = new ImageView();
             iv1.setImage(image1);
-//            iv1.setPreserveRatio(true);
 
-            Pane p2 = new Pane(); //pane with 3 buttons (Main Menu)
-            Image image2 = new Image("pauseMenu.png", 1350,800,false,false);
+            Pane p2 = new Pane();
+            Image image2 = new Image("file:pauseMenu.png", 1350,800,false,false);
             ImageView iv2 = new ImageView();
             iv2.setImage(image2);
             iv2.setPreserveRatio(true);
 
+            iv2.setOnMouseClicked(e->{
+                System.out.println("The pic is clicked");
+            });
+
             p2.getChildren().add(iv2);
 
             Button save = new Button("Save");
-            save.setLayoutX(510);
+            save.setLayoutX(500);
             save.setLayoutY(375);
-            save.setPrefSize(300,27);
-//            pauseMenu.setStyle("-fx-background-color:transparent;");
+            save.setPrefSize(330,37);
+            //pauseMenu.setStyle("-fx-background-color:transparent;");
             save.setOnAction(e->{
                 System.out.println("Save selected");
 
             });
 
             Button restart = new Button("Restart");
-            restart.setLayoutX(510);
+            restart.setLayoutX(500);
             restart.setLayoutY(430);
-            restart.setPrefSize(300,27);
-//            pauseMenu.setStyle("-fx-background-color:transparent;");
+            restart.setPrefSize(330,37);
+            //pauseMenu.setStyle("-fx-background-color:transparent;");
             restart.setOnAction(e->{
                 System.out.println("Restart selected");
 
             });
-//
+
             Button exit = new Button("To Main Menu");
-            exit.setLayoutX(510);
+            exit.setLayoutX(500);
             exit.setLayoutY(495);
-            exit.setPrefSize(300,27);
-//            pauseMenu.setStyle("-fx-background-color:transparent;");
+            exit.setPrefSize(330,30);
+            //pauseMenu.setStyle("-fx-background-color:transparent;");
             exit.setOnAction(e->{
-                System.out.println("Exit selected");
+                System.out.println("Exit to main menu selected");
 
             });
-//
+
             Button resume = new Button("Resume");
             resume.setLayoutX(400);
             resume.setLayoutY(565);
-            resume.setPrefSize(500,85);
-//            pauseMenu.setStyle("-fx-background-color:transparent;");
+            resume.setPrefSize(500,88);
+            //pauseMenu.setStyle("-fx-background-color:transparent;");
             resume.setOnAction(e->{
                 System.out.println("Resume selected");
                 stackPane.getChildren().remove(p2);
@@ -80,210 +90,104 @@ public class Main extends Application {
             p2.getChildren().add(exit);
             p2.getChildren().add(resume);
 
-
-
             Button zz = new Button("0,0");
+            lawnbutton(zz,70,100,120,100);
             Button zo = new Button("0,1");
+            lawnbutton(zo,70,215,120,100);
             Button ztw = new Button("0,2");
+            lawnbutton(ztw,70,330,120,100);
             Button zth = new Button("0,3");
+            lawnbutton(zth,70,450,120,100);
             Button zerof = new Button("0,4");
+            lawnbutton(zerof,70,560,120,100);
             Button oz = new Button("1,0");
+            lawnbutton(oz,200,100,120,100);
             Button oo = new Button("1,1");
+            lawnbutton(oo,200,215,120,100);
             Button otw = new Button("1,2");
+            lawnbutton(otw,200,330,120,100);
             Button oth = new Button("1,3");
+            lawnbutton(oth,200,450,120,100);
             Button of = new Button("1,4");
+            lawnbutton(of,200,560,120,100);
             Button twz = new Button("2,0");
+            lawnbutton(twz,340,100,120,100);
             Button two = new Button("2,1");
+            lawnbutton(two,340,215,120,100);
             Button twtw = new Button("2,2");
+            lawnbutton(twtw,340,330,120,100);
             Button twth = new Button("2,3");
+            lawnbutton(twth,340,450,120,100);
             Button twf = new Button("2,4");
+            lawnbutton(twf,340,560,120,100);
             Button thz = new Button("3,0");
+            lawnbutton(thz,480,100,120,100);
             Button tho = new Button("3,1");
+            lawnbutton(tho,480,215,120,100);
             Button thtw = new Button("3,2");
+            lawnbutton(thtw,480,330,120,100);
             Button thth = new Button("3,3");
+            lawnbutton(thth,480,450,120,100);
             Button thf = new Button("3,4");
+            lawnbutton(thf,480,560,120,100);
             Button fz = new Button("4,0");
+            lawnbutton(fz,610,100,120,100);
             Button fo = new Button("4,1");
+            lawnbutton(fo,610,215,120,100);
             Button ftw = new Button("4,2");
+            lawnbutton(ftw,610,330,120,100);
             Button fth = new Button("4,3");
+            lawnbutton(fth,610,450,120,100);
             Button ff = new Button("4,4");
+            lawnbutton(ff,610,560,120,100);
             Button fiz = new Button("5,0");
+            lawnbutton(fiz,745,100,120,100);
             Button fio = new Button("5,1");
+            lawnbutton(fio,745,215,120,100);
             Button fitw = new Button("5,2");
+            lawnbutton(fitw,745,330,120,100);
             Button fith = new Button("5,3");
+            lawnbutton(fith,745,450,120,100);
             Button fif = new Button("5,4");
+            lawnbutton(fif,745,560,120,100);
             Button sz = new Button("6,0");
+            lawnbutton(sz,875,100,120,100);
             Button so = new Button("6,1");
+            lawnbutton(so,875,215,120,100);
             Button stw = new Button("6,2");
+            lawnbutton(stw,875,330,120,100);
             Button sth = new Button("6,3");
+            lawnbutton(sth,875,450,120,100);
             Button sf = new Button("6,4");
+            lawnbutton(sf,875,560,120,100);
             Button sez = new Button("7,0");
+            lawnbutton(sez,1010,100,120,100);
             Button seo = new Button("7,1");
+            lawnbutton(seo,1010,215,120,100);
             Button setw = new Button("7,2");
+            lawnbutton(setw,1010,330,120,100);
             Button seth = new Button("7,3");
+            lawnbutton(seth,1010,450,120,100);
             Button sef = new Button("7,4");
+            lawnbutton(sef,1010,560,120,100);
             Button ez = new Button("8,0");
+            lawnbutton(ez,1135,100,120,100);
             Button eo = new Button("8,1");
+            lawnbutton(eo,1135,215,120,100);
             Button etw = new Button("8,2");
+            lawnbutton(etw,1135,330,120,100);
             Button eth = new Button("8,3");
+            lawnbutton(eth,1135,450,120,100);
             Button ef = new Button("8,4");
+            lawnbutton(ef,1135,560,120,100);
 
-
-
-//            zz.setStyle("-fx-background-color:transparent;");
+            //zz.setStyle("-fx-background-color:transparent;");
             //ng.setOnMouseEntered(e -> ng.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;\""));
             //ng.setOnMouseExited(e -> ng.setStyle("-fx-background-color:transparent;");
-//            zz.setOnAction(e->{
-//                System.out.println("New game selected");
-//                stackPane.getChildren().add(p);
-//            });
-
-            zz.setLayoutX(70);
-            zz.setLayoutY(100);
-            zz.setPrefSize(120,100);
-            oz.setLayoutX(200);
-            oz.setLayoutY(100);
-            oz.setPrefSize(120,100);
-            twz.setLayoutX(340);
-            twz.setLayoutY(100);
-            twz.setPrefSize(120,100);
-            thz.setLayoutX(480);
-            thz.setLayoutY(100);
-            thz.setPrefSize(120,100);
-            fz.setLayoutX(610);
-            fz.setLayoutY(100);
-            fz.setPrefSize(120,100);
-            fiz.setLayoutX(745);
-            fiz.setLayoutY(100);
-            fiz.setPrefSize(120,100);
-            sz.setLayoutX(875);
-            sz.setLayoutY(100);
-            sz.setPrefSize(120,100);
-            sez.setLayoutX(1010);
-            sez.setLayoutY(100);
-            sez.setPrefSize(120,100);
-            ez.setLayoutX(1135);
-            ez.setLayoutY(100);
-            ez.setPrefSize(120,100);
-
-            //**********************************************
-
-            zo.setLayoutX(70);
-            zo.setLayoutY(215);
-            zo.setPrefSize(120,100);
-            oo.setLayoutX(200);
-            oo.setLayoutY(215);
-            oo.setPrefSize(120,100);
-            two.setLayoutX(340);
-            two.setLayoutY(215);
-            two.setPrefSize(120,100);
-            tho.setLayoutX(480);
-            tho.setLayoutY(215);
-            tho.setPrefSize(120,100);
-            fo.setLayoutX(610);
-            fo.setLayoutY(215);
-            fo.setPrefSize(120,100);
-            fio.setLayoutX(745);
-            fio.setLayoutY(215);
-            fio.setPrefSize(120,100);
-            so.setLayoutX(875);
-            so.setLayoutY(215);
-            so.setPrefSize(120,100);
-            seo.setLayoutX(1010);
-            seo.setLayoutY(215);
-            seo.setPrefSize(120,100);
-            eo.setLayoutX(1145);
-            eo.setLayoutY(215);
-            eo.setPrefSize(120,100);
-
-            //****************************************
-            ztw.setLayoutX(70);
-            ztw.setLayoutY(330);
-            ztw.setPrefSize(120,100);
-            otw.setLayoutX(200);
-            otw.setLayoutY(330);
-            otw.setPrefSize(120,100);
-            twtw.setLayoutX(340);
-            twtw.setLayoutY(330);
-            twtw.setPrefSize(120,100);
-            thtw.setLayoutX(480);
-            thtw.setLayoutY(330);
-            thtw.setPrefSize(120,100);
-            ftw.setLayoutX(610);
-            ftw.setLayoutY(330);
-            ftw.setPrefSize(120,100);
-            fitw.setLayoutX(745);
-            fitw.setLayoutY(330);
-            fitw.setPrefSize(120,100);
-            stw.setLayoutX(875);
-            stw.setLayoutY(330);
-            stw.setPrefSize(120,100);
-            setw.setLayoutX(1010);
-            setw.setLayoutY(330);
-            setw.setPrefSize(120,100);
-            etw.setLayoutX(1150);
-            etw.setLayoutY(330);
-            etw.setPrefSize(120,100);
-
-            //**************************************
-//
-            zth.setLayoutX(70);
-            zth.setLayoutY(450);
-            zth.setPrefSize(120,100);
-            oth.setLayoutX(200);
-            oth.setLayoutY(450);
-            oth.setPrefSize(120,100);
-            twth.setLayoutX(340);
-            twth.setLayoutY(450);
-            twth.setPrefSize(120,100);
-            thth.setLayoutX(480);
-            thth.setLayoutY(450);
-            thth.setPrefSize(120,100);
-            fth.setLayoutX(610);
-            fth.setLayoutY(450);
-            fth.setPrefSize(120,100);
-            fith.setLayoutX(745);
-            fith.setLayoutY(450);
-            fith.setPrefSize(120,100);
-            sth.setLayoutX(875);
-            sth.setLayoutY(450);
-            sth.setPrefSize(120,100);
-            seth.setLayoutX(1010);
-            seth.setLayoutY(450);
-            seth.setPrefSize(120,100);
-            eth.setLayoutX(1150);
-            eth.setLayoutY(450);
-            eth.setPrefSize(120,100);
-
-            //**************************************
-//
-            zerof.setLayoutX(70);
-            zerof.setLayoutY(560);
-            zerof.setPrefSize(120,100);
-            of.setLayoutX(200);
-            of.setLayoutY(560);
-            of.setPrefSize(120,100);
-            twf.setLayoutX(340);
-            twf.setLayoutY(560);
-            twf.setPrefSize(120,100);
-            thf.setLayoutX(480);
-            thf.setLayoutY(560);
-            thf.setPrefSize(120,100);
-            ff.setLayoutX(610);
-            ff.setLayoutY(560);
-            ff.setPrefSize(120,100);
-            fif.setLayoutX(745);
-            fif.setLayoutY(560);
-            fif.setPrefSize(120,100);
-            sf.setLayoutX(875);
-            sf.setLayoutY(560);
-            sf.setPrefSize(120,100);
-            sef.setLayoutX(1010);
-            sef.setLayoutY(560);
-            sef.setPrefSize(120,100);
-            ef.setLayoutX(1150);
-            ef.setLayoutY(560);
-            ef.setPrefSize(120,100);
+            //zz.setOnAction(e->{
+                //System.out.println("New game selected");
+                //stackPane.getChildren().add(p);
+            //});
 
             Group bgrp = new Group();
             bgrp.getChildren().add(zo);
@@ -332,22 +236,23 @@ public class Main extends Application {
             bgrp.getChildren().add(eth);
             bgrp.getChildren().add(ef);
 
+            p.getChildren().add(bgrp);
+
+            Button sun = new Button();
+
+            stackPane.getChildren().addAll(iv1,p);
 
             Button pauseMenu = new Button("Menu");
             pauseMenu.setLayoutX(1150);
             pauseMenu.setLayoutY(0);
             pauseMenu.setPrefSize(170,27);
-//            pauseMenu.setStyle("-fx-background-color:transparent;");
+            //pauseMenu.setStyle("-fx-background-color:transparent;");
+            p.getChildren().add(pauseMenu);
             pauseMenu.setOnAction(e->{
                 System.out.println("Menu selected");
                 stackPane.getChildren().add(p2);
 
             });
-
-            p.getChildren().add(bgrp);
-            p.getChildren().add(pauseMenu);
-            stackPane.getChildren().addAll(iv1,p);
-
 
             Scene scene1 = new Scene(stackPane,1350, 700);
 
