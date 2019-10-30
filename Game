@@ -1,0 +1,329 @@
+package sample;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.geometry.Pos;
+
+public class Main extends Application {
+
+    // launch the application
+    public void start(Stage stage)
+    {
+        try {
+            StackPane stackPane = new StackPane(); //To display the scenes on top of each other
+            Pane p = new Pane(); //pane with 3 buttons (Main Menu)
+            Image image1 = new Image("Lawn.png", 1330,700,false,false);
+            ImageView iv1 = new ImageView();
+            iv1.setImage(image1);
+//            iv1.setPreserveRatio(true);
+
+            //PAUES MENU
+//            Pane p2 = new Pane(); //pane with 3 buttons (Main Menu)
+//            Image image2 = new Image("MainMenu.jpg", 1350,800,false,false);
+//            ImageView iv2 = new ImageView();
+//            iv2.setImage(image2);
+//            iv2.setPreserveRatio(true);
+
+//            stackPane.getChildren().addAll(iv1,p);
+
+            Button zz = new Button("0,0");
+            Button zo = new Button("0,1");
+            Button ztw = new Button("0,2");
+            Button zth = new Button("0,3");
+            Button zerof = new Button("0,4");
+            Button oz = new Button("1,0");
+            Button oo = new Button("1,1");
+            Button otw = new Button("1,2");
+            Button oth = new Button("1,3");
+            Button of = new Button("1,4");
+            Button twz = new Button("2,0");
+            Button two = new Button("2,1");
+            Button twtw = new Button("2,2");
+            Button twth = new Button("2,3");
+            Button twf = new Button("2,4");
+            Button thz = new Button("3,0");
+            Button tho = new Button("3,1");
+            Button thtw = new Button("3,2");
+            Button thth = new Button("3,3");
+            Button thf = new Button("3,4");
+            Button fz = new Button("4,0");
+            Button fo = new Button("4,1");
+            Button ftw = new Button("4,2");
+            Button fth = new Button("4,3");
+            Button ff = new Button("4,4");
+            Button fiz = new Button("5,0");
+            Button fio = new Button("5,1");
+            Button fitw = new Button("5,2");
+            Button fith = new Button("5,3");
+            Button fif = new Button("5,4");
+            Button sz = new Button("6,0");
+            Button so = new Button("6,1");
+            Button stw = new Button("6,2");
+            Button sth = new Button("6,3");
+            Button sf = new Button("6,4");
+            Button sez = new Button("7,0");
+            Button seo = new Button("7,1");
+            Button setw = new Button("7,2");
+            Button seth = new Button("7,3");
+            Button sef = new Button("7,4");
+            Button ez = new Button("8,0");
+            Button eo = new Button("8,1");
+            Button etw = new Button("8,2");
+            Button eth = new Button("8,3");
+            Button ef = new Button("8,4");
+
+
+
+//            zz.setStyle("-fx-background-color:transparent;");
+            //ng.setOnMouseEntered(e -> ng.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;\""));
+            //ng.setOnMouseExited(e -> ng.setStyle("-fx-background-color:transparent;");
+//            zz.setOnAction(e->{
+//                System.out.println("New game selected");
+//                stackPane.getChildren().add(p);
+//            });
+
+            zz.setLayoutX(70);
+            zz.setLayoutY(100);
+            zz.setPrefSize(120,100);
+            oz.setLayoutX(200);
+            oz.setLayoutY(100);
+            oz.setPrefSize(120,100);
+            twz.setLayoutX(340);
+            twz.setLayoutY(100);
+            twz.setPrefSize(120,100);
+            thz.setLayoutX(480);
+            thz.setLayoutY(100);
+            thz.setPrefSize(120,100);
+            fz.setLayoutX(610);
+            fz.setLayoutY(100);
+            fz.setPrefSize(120,100);
+            fiz.setLayoutX(745);
+            fiz.setLayoutY(100);
+            fiz.setPrefSize(120,100);
+            sz.setLayoutX(875);
+            sz.setLayoutY(100);
+            sz.setPrefSize(120,100);
+            sez.setLayoutX(1010);
+            sez.setLayoutY(100);
+            sez.setPrefSize(120,100);
+            ez.setLayoutX(1135);
+            ez.setLayoutY(100);
+            ez.setPrefSize(120,100);
+
+            //**********************************************
+
+            zo.setLayoutX(70);
+            zo.setLayoutY(215);
+            zo.setPrefSize(120,100);
+            oo.setLayoutX(200);
+            oo.setLayoutY(215);
+            oo.setPrefSize(120,100);
+            two.setLayoutX(340);
+            two.setLayoutY(215);
+            two.setPrefSize(120,100);
+            tho.setLayoutX(480);
+            tho.setLayoutY(215);
+            tho.setPrefSize(120,100);
+            fo.setLayoutX(610);
+            fo.setLayoutY(215);
+            fo.setPrefSize(120,100);
+            fio.setLayoutX(745);
+            fio.setLayoutY(215);
+            fio.setPrefSize(120,100);
+            so.setLayoutX(875);
+            so.setLayoutY(215);
+            so.setPrefSize(120,100);
+            seo.setLayoutX(1010);
+            seo.setLayoutY(215);
+            seo.setPrefSize(120,100);
+            eo.setLayoutX(1145);
+            eo.setLayoutY(215);
+            eo.setPrefSize(120,100);
+
+            //****************************************
+            ztw.setLayoutX(70);
+            ztw.setLayoutY(330);
+            ztw.setPrefSize(120,100);
+            otw.setLayoutX(200);
+            otw.setLayoutY(330);
+            otw.setPrefSize(120,100);
+            twtw.setLayoutX(340);
+            twtw.setLayoutY(330);
+            twtw.setPrefSize(120,100);
+            thtw.setLayoutX(480);
+            thtw.setLayoutY(330);
+            thtw.setPrefSize(120,100);
+            ftw.setLayoutX(610);
+            ftw.setLayoutY(330);
+            ftw.setPrefSize(120,100);
+            fitw.setLayoutX(745);
+            fitw.setLayoutY(330);
+            fitw.setPrefSize(120,100);
+            stw.setLayoutX(875);
+            stw.setLayoutY(330);
+            stw.setPrefSize(120,100);
+            setw.setLayoutX(1010);
+            setw.setLayoutY(330);
+            setw.setPrefSize(120,100);
+            etw.setLayoutX(1150);
+            etw.setLayoutY(330);
+            etw.setPrefSize(120,100);
+
+            //**************************************
+//
+            zth.setLayoutX(70);
+            zth.setLayoutY(450);
+            zth.setPrefSize(120,100);
+            oth.setLayoutX(200);
+            oth.setLayoutY(450);
+            oth.setPrefSize(120,100);
+            twth.setLayoutX(340);
+            twth.setLayoutY(450);
+            twth.setPrefSize(120,100);
+            thth.setLayoutX(480);
+            thth.setLayoutY(450);
+            thth.setPrefSize(120,100);
+            fth.setLayoutX(610);
+            fth.setLayoutY(450);
+            fth.setPrefSize(120,100);
+            fith.setLayoutX(745);
+            fith.setLayoutY(450);
+            fith.setPrefSize(120,100);
+            sth.setLayoutX(875);
+            sth.setLayoutY(450);
+            sth.setPrefSize(120,100);
+            seth.setLayoutX(1010);
+            seth.setLayoutY(450);
+            seth.setPrefSize(120,100);
+            eth.setLayoutX(1150);
+            eth.setLayoutY(450);
+            eth.setPrefSize(120,100);
+
+            //**************************************
+//
+            zerof.setLayoutX(70);
+            zerof.setLayoutY(560);
+            zerof.setPrefSize(120,100);
+            of.setLayoutX(200);
+            of.setLayoutY(560);
+            of.setPrefSize(120,100);
+            twf.setLayoutX(340);
+            twf.setLayoutY(560);
+            twf.setPrefSize(120,100);
+            thf.setLayoutX(480);
+            thf.setLayoutY(560);
+            thf.setPrefSize(120,100);
+            ff.setLayoutX(610);
+            ff.setLayoutY(560);
+            ff.setPrefSize(120,100);
+            fif.setLayoutX(745);
+            fif.setLayoutY(560);
+            fif.setPrefSize(120,100);
+            sf.setLayoutX(875);
+            sf.setLayoutY(560);
+            sf.setPrefSize(120,100);
+            sef.setLayoutX(1010);
+            sef.setLayoutY(560);
+            sef.setPrefSize(120,100);
+            ef.setLayoutX(1150);
+            ef.setLayoutY(560);
+            ef.setPrefSize(120,100);
+
+            Group bgrp = new Group();
+            bgrp.getChildren().add(zo);
+            bgrp.getChildren().add(zz);
+            bgrp.getChildren().add(ztw);
+            bgrp.getChildren().add(zth);
+            bgrp.getChildren().add(zerof);
+            bgrp.getChildren().add(oz);
+            bgrp.getChildren().add(oo);
+            bgrp.getChildren().add(otw);
+            bgrp.getChildren().add(oth);
+            bgrp.getChildren().add(of);
+            bgrp.getChildren().add(twz);
+            bgrp.getChildren().add(two);
+            bgrp.getChildren().add(twtw);
+            bgrp.getChildren().add(twth);
+            bgrp.getChildren().add(twf);
+            bgrp.getChildren().add(thz);
+            bgrp.getChildren().add(tho);
+            bgrp.getChildren().add(thtw);
+            bgrp.getChildren().add(thth);
+            bgrp.getChildren().add(thf);
+            bgrp.getChildren().add(fz);
+            bgrp.getChildren().add(fo);
+            bgrp.getChildren().add(ftw);
+            bgrp.getChildren().add(fth);
+            bgrp.getChildren().add(ff);
+            bgrp.getChildren().add(fiz);
+            bgrp.getChildren().add(fio);
+            bgrp.getChildren().add(fitw);
+            bgrp.getChildren().add(fith);
+            bgrp.getChildren().add(fif);
+            bgrp.getChildren().add(sz);
+            bgrp.getChildren().add(so);
+            bgrp.getChildren().add(stw);
+            bgrp.getChildren().add(sth);
+            bgrp.getChildren().add(sf);
+            bgrp.getChildren().add(sez);
+            bgrp.getChildren().add(seo);
+            bgrp.getChildren().add(setw);
+            bgrp.getChildren().add(seth);
+            bgrp.getChildren().add(sef);
+            bgrp.getChildren().add(ez);
+            bgrp.getChildren().add(eo);
+            bgrp.getChildren().add(etw);
+            bgrp.getChildren().add(eth);
+            bgrp.getChildren().add(ef);
+
+
+
+//            p.getChildren().add(bgrp);
+//            Button pauseMenu = new Button("Menu");
+//            pauseMenu.setLayoutX(470);
+//            pauseMenu.setLayoutY(440);
+//            pauseMenu.setPrefSize(200,35);
+//            pauseMenu.setStyle("-fx-background-color:transparent;");
+//            pauseMenu.setOnAction(e->{
+//                System.out.println("Menu selected");
+//                stackPane.getChildren().add(p2);
+//
+//            });
+
+//
+//            p2.getChildren().add(iv2);
+//            p2.getChildren().add(eName);
+//            p2.getChildren().add(pauseMenu);
+//            p2.getChildren().add(NmCancel);
+
+            stackPane.getChildren().addAll(iv1,p);
+
+            p.getChildren().add(bgrp);
+
+            Scene scene1 = new Scene(stackPane,1350, 700);
+
+            stage.setTitle("Plants Vs Zombies");
+            stage.setScene(scene1);
+            stage.show();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Main Method
+    public static void main(String args[])
+    {
+        // launch the application
+        launch(args);
+    }
+}
