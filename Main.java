@@ -88,6 +88,7 @@ public class Main extends Application {
             ex.setPrefSize(400,60);
             ex.setOnAction(e->{
                 System.out.println("Exit selected");
+                stage.close();
             });
 
             Group bgrp = new Group();
