@@ -19,14 +19,44 @@ public class Main extends Application {
     public void start(Stage stage)
     {
         try {
-            StackPane stackPane = new StackPane();
-
-            Pane p = new Pane();
-
+            StackPane stackPane = new StackPane(); //To display the scenes on top of each other
+            Pane p = new Pane(); //pane with 3 buttons (Main Menu)
             Image image1 = new Image("file:MainMenu.jpg", 1350,800,false,false);
             ImageView iv1 = new ImageView();
             iv1.setImage(image1);
             iv1.setPreserveRatio(true);
+
+            Pane p2 = new Pane(); //pane with text box and buttons for new name
+            Image image2 = new Image("file:Enter_Name.jpg", 500,300,false,false);
+            ImageView iv2 = new ImageView();
+            iv2.setX(430);
+            iv2.setY(200);
+            iv2.setImage(image2);
+            iv2.setPreserveRatio(true);
+            TextField eName = new TextField("");
+            eName.setLayoutX(468);
+            eName.setLayoutY(360);
+            eName.setPrefWidth(420);
+            Button NmOk = new Button("OK");
+            Button NmCancel = new Button("CANCEL");
+            NmOk.setLayoutX(470);
+            NmOk.setLayoutY(440);
+            NmOk.setPrefSize(200,35);
+            NmOk.setStyle("-fx-background-color:transparent;");
+            NmOk.setOnAction(e->{
+                System.out.println("OK selected");
+            });
+            NmCancel.setLayoutX(700);
+            NmCancel.setLayoutY(440);
+            NmCancel.setPrefSize(200,35);
+            NmCancel.setStyle("-fx-background-color:transparent;");
+            NmCancel.setOnAction(e->{
+                System.out.println("Cancel selected");
+            });
+            p2.getChildren().add(iv2);
+            p2.getChildren().add(eName);
+            p2.getChildren().add(NmOk);
+            p2.getChildren().add(NmCancel);
 
             stackPane.getChildren().addAll(iv1,p);
 
@@ -35,10 +65,13 @@ public class Main extends Application {
             Button ex = new Button("Exit");
             ng.setLayoutX(720);
             ng.setLayoutY(245);
-            ng.setStyle("-fx-background-color:transparent;");
             ng.setPrefSize(455,80);
+            ng.setStyle("-fx-background-color:transparent;");
+            //ng.setOnMouseEntered(e -> ng.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;\""));
+            //ng.setOnMouseExited(e -> ng.setStyle("-fx-background-color:transparent;");
             ng.setOnAction(e->{
                 System.out.println("New game selected");
+                stackPane.getChildren().add(p2);
             });
             lg.setLayoutX(720);
             lg.setLayoutY(350);
@@ -54,6 +87,7 @@ public class Main extends Application {
             ex.setOnAction(e->{
                 System.out.println("Exit selected");
             });
+
             Group bgrp = new Group();
             bgrp.getChildren().add(ng);
             bgrp.getChildren().add(lg);
