@@ -26,14 +26,61 @@ public class Main extends Application {
             iv1.setImage(image1);
 //            iv1.setPreserveRatio(true);
 
-            //PAUES MENU
-//            Pane p2 = new Pane(); //pane with 3 buttons (Main Menu)
-//            Image image2 = new Image("MainMenu.jpg", 1350,800,false,false);
-//            ImageView iv2 = new ImageView();
-//            iv2.setImage(image2);
-//            iv2.setPreserveRatio(true);
+            Pane p2 = new Pane(); //pane with 3 buttons (Main Menu)
+            Image image2 = new Image("pauseMenu.png", 1350,800,false,false);
+            ImageView iv2 = new ImageView();
+            iv2.setImage(image2);
+            iv2.setPreserveRatio(true);
 
-//            stackPane.getChildren().addAll(iv1,p);
+            p2.getChildren().add(iv2);
+
+            Button save = new Button("Save");
+            save.setLayoutX(510);
+            save.setLayoutY(375);
+            save.setPrefSize(300,27);
+//            pauseMenu.setStyle("-fx-background-color:transparent;");
+            save.setOnAction(e->{
+                System.out.println("Save selected");
+
+            });
+
+            Button restart = new Button("Restart");
+            restart.setLayoutX(510);
+            restart.setLayoutY(430);
+            restart.setPrefSize(300,27);
+//            pauseMenu.setStyle("-fx-background-color:transparent;");
+            restart.setOnAction(e->{
+                System.out.println("Restart selected");
+
+            });
+//
+            Button exit = new Button("To Main Menu");
+            exit.setLayoutX(510);
+            exit.setLayoutY(495);
+            exit.setPrefSize(300,27);
+//            pauseMenu.setStyle("-fx-background-color:transparent;");
+            exit.setOnAction(e->{
+                System.out.println("Exit selected");
+
+            });
+//
+            Button resume = new Button("Resume");
+            resume.setLayoutX(400);
+            resume.setLayoutY(565);
+            resume.setPrefSize(500,85);
+//            pauseMenu.setStyle("-fx-background-color:transparent;");
+            resume.setOnAction(e->{
+                System.out.println("Resume selected");
+                stackPane.getChildren().remove(p2);
+
+            });
+
+            p2.getChildren().add(save);
+            p2.getChildren().add(restart);
+            p2.getChildren().add(exit);
+            p2.getChildren().add(resume);
+
+
 
             Button zz = new Button("0,0");
             Button zo = new Button("0,1");
@@ -286,28 +333,21 @@ public class Main extends Application {
             bgrp.getChildren().add(ef);
 
 
-
-//            p.getChildren().add(bgrp);
-//            Button pauseMenu = new Button("Menu");
-//            pauseMenu.setLayoutX(470);
-//            pauseMenu.setLayoutY(440);
-//            pauseMenu.setPrefSize(200,35);
+            Button pauseMenu = new Button("Menu");
+            pauseMenu.setLayoutX(1150);
+            pauseMenu.setLayoutY(0);
+            pauseMenu.setPrefSize(170,27);
 //            pauseMenu.setStyle("-fx-background-color:transparent;");
-//            pauseMenu.setOnAction(e->{
-//                System.out.println("Menu selected");
-//                stackPane.getChildren().add(p2);
-//
-//            });
+            pauseMenu.setOnAction(e->{
+                System.out.println("Menu selected");
+                stackPane.getChildren().add(p2);
 
-//
-//            p2.getChildren().add(iv2);
-//            p2.getChildren().add(eName);
-//            p2.getChildren().add(pauseMenu);
-//            p2.getChildren().add(NmCancel);
-
-            stackPane.getChildren().addAll(iv1,p);
+            });
 
             p.getChildren().add(bgrp);
+            p.getChildren().add(pauseMenu);
+            stackPane.getChildren().addAll(iv1,p);
+
 
             Scene scene1 = new Scene(stackPane,1350, 700);
 
