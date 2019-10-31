@@ -38,22 +38,46 @@ public class Game extends Application {
             iv2.setPreserveRatio(true);
             p2.getChildren().add(iv2);
 
-            Image sunimg = new Image("file:sun.png",50,50,false,false);
-            ImageView ivsun = new ImageView();
-            ivsun.setImage(sunimg);
-            ivsun.setPreserveRatio(true);
-            ivsun.relocate(200,0);
-            p.getChildren().add(ivsun);
-            ivsun.setOnMouseClicked(e->{
-                System.out.println("Sun collected");
-            });
+            Image zomimg = new Image("file:Zombie.gif",80,150,false,false);
+            ImageView ivzom = new ImageView();
+            ivzom.setImage(zomimg);
+            ivzom.setPreserveRatio(true);
+            ivzom.relocate(1135,40);
+            p.getChildren().add(ivzom);
 
-            //Bounds bounds = p.getBoundsInLocal();
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5),
-                    new KeyValue(ivsun.layoutYProperty(), 350)));
-            timeline.setDelay(Duration.seconds(5));
-            timeline.play();
+            Image plimg = new Image("file:Pea.gif",90,110,false,false);
+            ImageView ivpl = new ImageView();
+            ivpl.setImage(plimg);
+            ivpl.setPreserveRatio(true);
+            ivpl.relocate(90,100);
+            p.getChildren().add(ivpl);
 
+            Image lm1 = new Image("file:LawnMower.png", 100,70, false, false);
+            ImageView ivlm1 = new ImageView();
+            ivlm1.setImage(lm1);
+            ivlm1.setPreserveRatio(true);
+            ivlm1.relocate(10,115);
+            p.getChildren().add(ivlm1);
+            ImageView ivlm2 = new ImageView();
+            ivlm2.setImage(lm1);
+            ivlm2.setPreserveRatio(true);
+            ivlm2.relocate(10,230);
+            p.getChildren().add(ivlm2);
+            ImageView ivlm3 = new ImageView();
+            ivlm3.setImage(lm1);
+            ivlm3.setPreserveRatio(true);
+            ivlm3.relocate(10,335);
+            p.getChildren().add(ivlm3);
+            ImageView ivlm4 = new ImageView();
+            ivlm4.setImage(lm1);
+            ivlm4.setPreserveRatio(true);
+            ivlm4.relocate(10,450);
+            p.getChildren().add(ivlm4);
+            ImageView ivlm5 = new ImageView();
+            ivlm5.setImage(lm1);
+            ivlm5.setPreserveRatio(true);
+            ivlm5.relocate(10,565);
+            p.getChildren().add(ivlm5);
 
             Button save = new Button("Save");
             save.setLayoutX(500);
