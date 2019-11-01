@@ -87,7 +87,6 @@ public class Main extends Application {
             p3.getChildren().add(l5);
             p3.getChildren().add(back);
 
-
             stackPane.getChildren().addAll(iv1, p);
 
             Button chLev = new Button("Select Level");
