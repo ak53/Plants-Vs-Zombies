@@ -7,11 +7,17 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.util.Duration;
 
 public class Main extends Application {
+
+    PathTransition transition;
+
 
     public void lawnbutton(Button b, double posx, double posy, double sx, double sy){
         b.setLayoutX(posx);
@@ -46,6 +52,34 @@ public class Main extends Application {
             iv2G.setImage(image2G);
             iv2G.setPreserveRatio(true);
             p2G.getChildren().add(iv2G);
+
+
+            Group root = new Group();
+            Button btn = new Button("Sun");
+            btn.setLayoutX(700);
+            btn.setLayoutY(0);
+            btn.setPrefSize(70,70);
+            btn.setStyle("-fx-background-color:transparent;");
+            btn.setOnAction(e->{
+                System.out.println("Sun selected");
+
+            });
+            Image imageSun = new Image("sun.png", 70,70,false,false);
+            ImageView imsun = new ImageView();
+            imsun.setImage(imageSun);
+            imsun.setPreserveRatio(true);
+            imsun.relocate(700,0);
+            root.getChildren().add(btn);
+            root.getChildren().add(imsun);
+            pG.getChildren().add(root);
+            transition = new PathTransition();
+            transition.setNode(root);
+            transition.setDuration(Duration.seconds(10));
+            Path path = new Path();
+            path.getElements().add(new MoveTo(700, 20));
+            path.getElements().add(new LineTo(700, 800));
+            transition.setPath(path);
+
 
             Image lm1 = new Image("LawnMower.png", 100,70, false, false);
             ImageView ivlm1 = new ImageView();
@@ -479,6 +513,8 @@ public class Main extends Application {
                 bullettrans.play();
                 translateTransition.play();
                 s.play();
+                transition.play();
+
             });
             ButtonFormat(lg,720,350,445,70);
             lg.setOnAction(e -> {
