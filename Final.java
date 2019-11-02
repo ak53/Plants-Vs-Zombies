@@ -36,18 +36,18 @@ public class Main extends Application {
             Scene scene2 = new Scene(stackPaneG,1350,700);
 
             Pane pG = new Pane();
-            Image image1G = new Image("file:Lawn.png", 1330,700,false,false);
+            Image image1G = new Image("Lawn.png", 1330,700,false,false);
             ImageView iv1G = new ImageView();
             iv1G.setImage(image1G);
 
             Pane p2G = new Pane();
-            Image image2G = new Image("file:pauseMenu.png", 1350,800,false,false);
+            Image image2G = new Image("pauseMenu.png", 1350,800,false,false);
             ImageView iv2G = new ImageView();
             iv2G.setImage(image2G);
             iv2G.setPreserveRatio(true);
             p2G.getChildren().add(iv2G);
 
-            Image lm1 = new Image("file:LawnMower.png", 100,70, false, false);
+            Image lm1 = new Image("LawnMower.png", 100,70, false, false);
             ImageView ivlm1 = new ImageView();
             ivlm1.setImage(lm1);
             ivlm1.setPreserveRatio(true);
@@ -74,31 +74,31 @@ public class Main extends Application {
             ivlm5.relocate(310,565);
             pG.getChildren().add(ivlm5);
 
-            Image pb = new Image("file:Peabullet.png",30,30,false,false);
+            Image pb = new Image("Peabullet.png",30,30,false,false);
             ImageView ivpb = new ImageView();
             ivpb.setImage(pb);
             pG.getChildren().add(ivpb);
             //Creating Translate Transition
             TranslateTransition bullettrans = new TranslateTransition();
             //Setting the duration of the transition
-            bullettrans.setDuration(Duration.seconds(10));
+            bullettrans.setDuration(Duration.seconds(7));
             //Setting the node for the transition
             bullettrans.setNode(ivpb);
             //Setting the value of the transition along the x axis.
             bullettrans.setFromX(415);
-            bullettrans.setFromY(130);
-            bullettrans.setToX(1300);
+            bullettrans.setFromY(100);
+            bullettrans.setToX(1400);
             //Playing the animation
 
 
-            Image plimg = new Image("file:Pea.gif",100,110,false,false);
+            Image plimg = new Image("Pea.gif",90,100,false,false);
             ImageView ivpl = new ImageView();
             ivpl.setImage(plimg);
             ivpl.setPreserveRatio(true);
-            ivpl.relocate(400,100);
+            ivpl.relocate(400,80);
             pG.getChildren().add(ivpl);
 
-            Image zomimg = new Image("file:Zombie.gif",80,150,false,false);
+            Image zomimg = new Image("Zombie.gif",90,170,false,false);
             ImageView ivzom = new ImageView();
             ivzom.setImage(zomimg);
             ivzom.setPreserveRatio(true);
@@ -110,8 +110,8 @@ public class Main extends Application {
             translateTransition.setDuration(Duration.seconds(38));
             //Setting the node for the transition
             translateTransition.setNode(ivzom);
-            translateTransition.setFromX(1155);
-            translateTransition.setFromY(60);
+            translateTransition.setFromX(1270);
+            translateTransition.setFromY(20);
             //Setting the value of the transition along the x axis.
             translateTransition.setByX(-900);
             //Playing the animation
@@ -335,13 +335,13 @@ public class Main extends Application {
 
 
             Pane p = new Pane(); //pane with 3 buttons (Main Menu)
-            Image image1 = new Image("file:MainMenu.jpg", 1350, 800, false, false);
+            Image image1 = new Image("MainMenu.jpg", 1350, 800, false, false);
             ImageView iv1 = new ImageView();
             iv1.setImage(image1);
             iv1.setPreserveRatio(true);
 
             Pane p2 = new Pane(); //pane with text box and buttons for new name
-            Image image2 = new Image("file:Enter_Name.jpg", 500, 300, false, false);
+            Image image2 = new Image("Enter_Name.jpg", 500, 300, false, false);
             ImageView iv2 = new ImageView();
             iv2.setX(430);
             iv2.setY(200);
@@ -373,7 +373,7 @@ public class Main extends Application {
             p2.getChildren().add(NmCancel);
 
             Pane p3 = new Pane();
-            Image image3 = new Image("file:ChooseLevel.jpg", 1350, 700, false, false);
+            Image image3 = new Image("ChooseLevel.jpg", 1350, 700, false, false);
             ImageView iv3 = new ImageView();
             iv3.setImage(image3);
             p3.getChildren().add(iv3);
@@ -401,6 +401,20 @@ public class Main extends Application {
 
             stackPane.getChildren().addAll(iv1, p, p2);
 
+            Pane p4=new Pane();
+            Image image4 = new Image("savedFiles.jpg", 1350, 700, false, false);
+            ImageView iv4 = new ImageView();
+            iv4.setImage(image4);
+            p4.getChildren().add(iv4);
+            Button backSaved = new Button("Back");
+            ButtonFormat(backSaved,580,594,205,50);
+            backSaved.setOnAction(e->{
+                stackPane.getChildren().remove(p4);
+            });
+            p4.getChildren().add(backSaved);
+
+
+
             Button chLev = new Button("Select Level");
             Button ng = new Button("New Game");
             Button lg = new Button("Load Game");
@@ -422,6 +436,7 @@ public class Main extends Application {
             ButtonFormat(lg,720,350,445,70);
             lg.setOnAction(e -> {
                 System.out.println("Load game selected");
+                stackPane.getChildren().add(p4);
             });
             ButtonFormat(ex,730,455,400,60);
             ex.setOnAction(e -> {
