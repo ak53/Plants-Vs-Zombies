@@ -53,11 +53,11 @@ public class Main extends Application {
             ivlm1.setPreserveRatio(true);
             ivlm1.relocate(310,115);
             pG.getChildren().add(ivlm1);
-            ImageView ivlm2 = new ImageView();
-            ivlm2.setImage(lm1);
-            ivlm2.setPreserveRatio(true);
-            ivlm2.relocate(310,230);
-            pG.getChildren().add(ivlm2);
+//            ImageView ivlm2 = new ImageView();
+//            ivlm2.setImage(lm1);
+//            ivlm2.setPreserveRatio(true);
+//            ivlm2.relocate(310,230);
+//            pG.getChildren().add(ivlm2);
             ImageView ivlm3 = new ImageView();
             ivlm3.setImage(lm1);
             ivlm3.setPreserveRatio(true);
@@ -107,14 +107,60 @@ public class Main extends Application {
             //Creating Translate Transition
             TranslateTransition translateTransition = new TranslateTransition();
             //Setting the duration of the transition
-            translateTransition.setDuration(Duration.seconds(38));
+            translateTransition.setDuration(Duration.seconds(39));
             //Setting the node for the transition
             translateTransition.setNode(ivzom);
             translateTransition.setFromX(1270);
             translateTransition.setFromY(20);
             //Setting the value of the transition along the x axis.
-            translateTransition.setByX(-900);
+            translateTransition.setByX(-910);
+
             //Playing the animation
+
+
+
+            Image zom2 = new Image("Zombie.gif",90,170,false,false);
+            ImageView ivzom2 = new ImageView();
+            ivzom2.setImage(zom2);
+            ivzom2.setPreserveRatio(true);
+            //ivzom.relocate(1155,60);
+            pG.getChildren().add(ivzom2);
+            //Creating Translate Transition
+            TranslateTransition tT = new TranslateTransition();
+            //Setting the duration of the transition
+            tT.setDuration(Duration.seconds(39));
+            //Setting the node for the transition
+            tT.setNode(ivzom2);
+            tT.setFromX(1270);
+            tT.setFromY(120);
+            //Setting the value of the transition along the x axis.
+            tT.setByX(-910);
+
+
+            Image lawnMover = new Image("LawnMower.png",100,70,false,false);
+            ImageView lm = new ImageView();
+            lm.setImage(lawnMover);
+            lm.setPreserveRatio(true);
+            //ivzom.relocate(1155,60);
+            pG.getChildren().add(lm);
+            //Creating Translate Transition
+            TranslateTransition moverTrans = new TranslateTransition();
+            //Setting the duration of the transition
+            moverTrans.setDuration(Duration.seconds(7));
+            //Setting the node for the transition
+            moverTrans.setNode(lm);
+            //Setting the value of the transition along the x axis.
+            moverTrans.setFromX(310);
+            moverTrans.setFromY(230);
+            moverTrans.setToX(1400);
+
+
+
+            //Playing the animation
+            SequentialTransition s =
+                    new SequentialTransition(tT,moverTrans);
+            s.play();
+
 
             Button save = new Button("Save");
             save.setLayoutX(500);
@@ -432,6 +478,7 @@ public class Main extends Application {
                 stage.setScene(scene2);
                 bullettrans.play();
                 translateTransition.play();
+                s.play();
             });
             ButtonFormat(lg,720,350,445,70);
             lg.setOnAction(e -> {
