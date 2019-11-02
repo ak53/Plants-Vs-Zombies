@@ -102,7 +102,7 @@ public class Main extends Application {
             ImageView ivzom = new ImageView();
             ivzom.setImage(zomimg);
             ivzom.setPreserveRatio(true);
-            ivzom.relocate(1155,60);
+            //ivzom.relocate(1155,60);
             pG.getChildren().add(ivzom);
             //Creating Translate Transition
             TranslateTransition translateTransition = new TranslateTransition();
@@ -110,6 +110,8 @@ public class Main extends Application {
             translateTransition.setDuration(Duration.seconds(38));
             //Setting the node for the transition
             translateTransition.setNode(ivzom);
+            translateTransition.setFromX(1155);
+            translateTransition.setFromY(60);
             //Setting the value of the transition along the x axis.
             translateTransition.setByX(-900);
             //Playing the animation
@@ -141,6 +143,7 @@ public class Main extends Application {
             //pauseMenu.setStyle("-fx-background-color:transparent;");
             exit.setOnAction(e->{
                 System.out.println("Exit to main menu selected");
+                stackPaneG.getChildren().remove(p2G);
                 stage.setScene(scene1);
             });
 
@@ -354,14 +357,14 @@ public class Main extends Application {
             NmOk.setOnAction(e -> {
                 System.out.println("OK selected");
                 stackPane.getChildren().remove(p2);
-                stage.setScene(scene2);
+                /*stage.setScene(scene2);
                 bullettrans.play();
-                translateTransition.play();
+                translateTransition.play();*/
             });
             ButtonFormat(NmCancel,700,440,190,35);
             NmCancel.setOnAction(e -> {
                 System.out.println("Cancel selected");
-                stackPane.getChildren().remove(p2);
+                eName.setText("");
 
             });
             p2.getChildren().add(iv2);
@@ -396,7 +399,7 @@ public class Main extends Application {
             p3.getChildren().add(l5);
             p3.getChildren().add(back);
 
-            stackPane.getChildren().addAll(iv1, p);
+            stackPane.getChildren().addAll(iv1, p, p2);
 
             Button chLev = new Button("Select Level");
             Button ng = new Button("New Game");
@@ -412,7 +415,9 @@ public class Main extends Application {
             //ng.setOnMouseExited(e -> ng.setStyle("-fx-background-color:transparent;");
             ng.setOnAction(e -> {
                 System.out.println("New game selected");
-                stackPane.getChildren().add(p2);
+                stage.setScene(scene2);
+                bullettrans.play();
+                translateTransition.play();
             });
             ButtonFormat(lg,720,350,445,70);
             lg.setOnAction(e -> {
