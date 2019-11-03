@@ -7,9 +7,10 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.util.Duration;
@@ -17,7 +18,6 @@ import javafx.util.Duration;
 public class Main extends Application {
 
     PathTransition transition;
-
 
     public void lawnbutton(Button b, double posx, double posy, double sx, double sy){
         b.setLayoutX(posx);
@@ -42,17 +42,30 @@ public class Main extends Application {
             Scene scene2 = new Scene(stackPaneG,1350,700);
 
             Pane pG = new Pane();
-            Image image1G = new Image("Lawn.png", 1330,700,false,false);
+            Image image1G = new Image("file:Lawn.png", 1330,700,false,false);
             ImageView iv1G = new ImageView();
             iv1G.setImage(image1G);
 
             Pane p2G = new Pane();
-            Image image2G = new Image("pauseMenu.png", 1350,800,false,false);
+            Image image2G = new Image("file:pauseMenu.png", 1350,800,false,false);
             ImageView iv2G = new ImageView();
             iv2G.setImage(image2G);
             iv2G.setPreserveRatio(true);
             p2G.getChildren().add(iv2G);
 
+            Label NumSuns = new Label("");
+            NumSuns.setText("50");
+            pG.getChildren().add(NumSuns);
+            NumSuns.setLayoutX(50);
+            NumSuns.setLayoutY(90);
+
+            Rectangle timer = new Rectangle();
+            timer.setHeight(15);
+            timer.setX(497);
+            timer.setWidth(50);
+            timer.setY(12);
+            timer.setFill(Color.GREENYELLOW);
+            pG.getChildren().add(timer);
 
             Group root = new Group();
             Button btn = new Button("Sun");
@@ -62,15 +75,15 @@ public class Main extends Application {
             btn.setStyle("-fx-background-color:transparent;");
             btn.setOnAction(e->{
                 System.out.println("Sun selected");
-
             });
-            Image imageSun = new Image("sun.png", 70,70,false,false);
+
+            Image imageSun = new Image("file:sun.png", 70,70,false,false);
             ImageView imsun = new ImageView();
             imsun.setImage(imageSun);
             imsun.setPreserveRatio(true);
             imsun.relocate(700,0);
-            root.getChildren().add(btn);
             root.getChildren().add(imsun);
+            root.getChildren().add(btn);
             pG.getChildren().add(root);
             transition = new PathTransition();
             transition.setNode(root);
@@ -80,18 +93,12 @@ public class Main extends Application {
             path.getElements().add(new LineTo(700, 800));
             transition.setPath(path);
 
-
-            Image lm1 = new Image("LawnMower.png", 100,70, false, false);
+            Image lm1 = new Image("file:LawnMower.png", 100,70, false, false);
             ImageView ivlm1 = new ImageView();
             ivlm1.setImage(lm1);
             ivlm1.setPreserveRatio(true);
             ivlm1.relocate(310,115);
             pG.getChildren().add(ivlm1);
-//            ImageView ivlm2 = new ImageView();
-//            ivlm2.setImage(lm1);
-//            ivlm2.setPreserveRatio(true);
-//            ivlm2.relocate(310,230);
-//            pG.getChildren().add(ivlm2);
             ImageView ivlm3 = new ImageView();
             ivlm3.setImage(lm1);
             ivlm3.setPreserveRatio(true);
@@ -108,7 +115,7 @@ public class Main extends Application {
             ivlm5.relocate(310,565);
             pG.getChildren().add(ivlm5);
 
-            Image pb = new Image("Peabullet.png",30,30,false,false);
+            Image pb = new Image("file:Peabullet.png",30,30,false,false);
             ImageView ivpb = new ImageView();
             ivpb.setImage(pb);
             pG.getChildren().add(ivpb);
@@ -122,17 +129,15 @@ public class Main extends Application {
             bullettrans.setFromX(415);
             bullettrans.setFromY(100);
             bullettrans.setToX(1400);
-            //Playing the animation
 
-
-            Image plimg = new Image("Pea.gif",90,100,false,false);
+            Image plimg = new Image("file:Pea.gif",90,100,false,false);
             ImageView ivpl = new ImageView();
             ivpl.setImage(plimg);
             ivpl.setPreserveRatio(true);
             ivpl.relocate(400,80);
             pG.getChildren().add(ivpl);
 
-            Image zomimg = new Image("Zombie.gif",90,170,false,false);
+            Image zomimg = new Image("file:Zombie.gif",90,170,false,false);
             ImageView ivzom = new ImageView();
             ivzom.setImage(zomimg);
             ivzom.setPreserveRatio(true);
@@ -149,11 +154,7 @@ public class Main extends Application {
             //Setting the value of the transition along the x axis.
             translateTransition.setByX(-910);
 
-            //Playing the animation
-
-
-
-            Image zom2 = new Image("Zombie.gif",90,170,false,false);
+            Image zom2 = new Image("file:Zombie.gif",90,170,false,false);
             ImageView ivzom2 = new ImageView();
             ivzom2.setImage(zom2);
             ivzom2.setPreserveRatio(true);
@@ -170,8 +171,7 @@ public class Main extends Application {
             //Setting the value of the transition along the x axis.
             tT.setByX(-910);
 
-
-            Image lawnMover = new Image("LawnMower.png",100,70,false,false);
+            Image lawnMover = new Image("file:LawnMower.png",100,70,false,false);
             ImageView lm = new ImageView();
             lm.setImage(lawnMover);
             lm.setPreserveRatio(true);
@@ -188,54 +188,47 @@ public class Main extends Application {
             moverTrans.setFromY(230);
             moverTrans.setToX(1400);
 
-
-
             //Playing the animation
             SequentialTransition s =
                     new SequentialTransition(tT,moverTrans);
-            s.play();
 
-
-            Button save = new Button("Save");
+            Button save = new Button("");
             save.setLayoutX(500);
             save.setLayoutY(375);
             save.setPrefSize(330,37);
-            //pauseMenu.setStyle("-fx-background-color:transparent;");
+            save.setStyle("-fx-background-color:transparent;");
             save.setOnAction(e->{
                 System.out.println("Save selected");
-
             });
 
-            Button restart = new Button("Restart");
+            Button restart = new Button("");
             restart.setLayoutX(500);
             restart.setLayoutY(430);
             restart.setPrefSize(330,37);
-            //pauseMenu.setStyle("-fx-background-color:transparent;");
+            restart.setStyle("-fx-background-color:transparent;");
             restart.setOnAction(e->{
                 System.out.println("Restart selected");
-
             });
 
-            Button exit = new Button("To Main Menu");
+            Button exit = new Button("");
             exit.setLayoutX(500);
             exit.setLayoutY(495);
             exit.setPrefSize(330,30);
-            //pauseMenu.setStyle("-fx-background-color:transparent;");
+            exit.setStyle("-fx-background-color:transparent;");
             exit.setOnAction(e->{
                 System.out.println("Exit to main menu selected");
                 stackPaneG.getChildren().remove(p2G);
                 stage.setScene(scene1);
             });
 
-            Button resume = new Button("Resume");
+            Button resume = new Button("");
             resume.setLayoutX(400);
             resume.setLayoutY(565);
             resume.setPrefSize(500,88);
-            //pauseMenu.setStyle("-fx-background-color:transparent;");
+            resume.setStyle("-fx-background-color:transparent;");
             resume.setOnAction(e->{
                 System.out.println("Resume selected");
                 stackPaneG.getChildren().remove(p2G);
-
             });
 
             p2G.getChildren().add(save);
@@ -243,110 +236,96 @@ public class Main extends Application {
             p2G.getChildren().add(exit);
             p2G.getChildren().add(resume);
 
-            Label NumSuns = new Label("");
-            NumSuns.setText("50");
-            pG.getChildren().add(NumSuns);
-            NumSuns.setLayoutX(50);
-            NumSuns.setLayoutY(90);
-
-            Button zz = new Button("0,0");
+            Button zz = new Button("");
             lawnbutton(zz,380,100,100,100);
-            Button zo = new Button("0,1");
+            Button zo = new Button("");
             lawnbutton(zo,380,215,100,100);
-            Button ztw = new Button("0,2");
+            Button ztw = new Button("");
             lawnbutton(ztw,380,330,100,100);
-            Button zth = new Button("0,3");
+            Button zth = new Button("");
             lawnbutton(zth,380,450,100,100);
-            Button zerof = new Button("0,4");
+            Button zerof = new Button("");
             lawnbutton(zerof,380,560,100,100);
-            Button oz = new Button("1,0");
+            Button oz = new Button("");
             lawnbutton(oz,490,100,100,100);
-            Button oo = new Button("1,1");
+            Button oo = new Button("");
             lawnbutton(oo,490,215,100,100);
-            Button otw = new Button("1,2");
+            Button otw = new Button("");
             lawnbutton(otw,490,330,100,100);
-            Button oth = new Button("1,3");
+            Button oth = new Button("");
             lawnbutton(oth,490,450,100,100);
-            Button of = new Button("1,4");
+            Button of = new Button("");
             lawnbutton(of,490,560,100,100);
-            Button twz = new Button("2,0");
+            Button twz = new Button("");
             lawnbutton(twz,585,100,100,100);
-            Button two = new Button("2,1");
+            Button two = new Button("");
             lawnbutton(two,585,215,100,100);
-            Button twtw = new Button("2,2");
+            Button twtw = new Button("");
             lawnbutton(twtw,585,330,100,100);
-            Button twth = new Button("2,3");
+            Button twth = new Button("");
             lawnbutton(twth,585,450,100,100);
-            Button twf = new Button("2,4");
+            Button twf = new Button("");
             lawnbutton(twf,585,560,100,100);
-            Button thz = new Button("3,0");
+            Button thz = new Button("");
             lawnbutton(thz,687,100,100,100);
-            Button tho = new Button("3,1");
+            Button tho = new Button("");
             lawnbutton(tho,687,215,100,100);
-            Button thtw = new Button("3,2");
+            Button thtw = new Button("");
             lawnbutton(thtw,687,330,100,100);
-            Button thth = new Button("3,3");
+            Button thth = new Button("");
             lawnbutton(thth,687,450,100,100);
-            Button thf = new Button("3,4");
+            Button thf = new Button("");
             lawnbutton(thf,687,560,100,100);
-            Button fz = new Button("4,0");
+            Button fz = new Button("");
             lawnbutton(fz,790,100,100,100);
-            Button fo = new Button("4,1");
+            Button fo = new Button("");
             lawnbutton(fo,790,215,100,100);
-            Button ftw = new Button("4,2");
+            Button ftw = new Button("");
             lawnbutton(ftw,790,330,100,100);
-            Button fth = new Button("4,3");
+            Button fth = new Button("");
             lawnbutton(fth,790,450,100,100);
-            Button ff = new Button("4,4");
+            Button ff = new Button("");
             lawnbutton(ff,790,560,100,100);
-            Button fiz = new Button("5,0");
+            Button fiz = new Button("");
             lawnbutton(fiz,896,100,100,100);
-            Button fio = new Button("5,1");
+            Button fio = new Button("");
             lawnbutton(fio,896,215,100,100);
-            Button fitw = new Button("5,2");
+            Button fitw = new Button("");
             lawnbutton(fitw,896,330,100,100);
-            Button fith = new Button("5,3");
+            Button fith = new Button("");
             lawnbutton(fith,896,450,100,100);
-            Button fif = new Button("5,4");
+            Button fif = new Button("");
             lawnbutton(fif,896,560,100,100);
-            Button sz = new Button("6,0");
+            Button sz = new Button("");
             lawnbutton(sz,999,100,100,100);
-            Button so = new Button("6,1");
+            Button so = new Button("");
             lawnbutton(so,999,215,100,100);
-            Button stw = new Button("6,2");
+            Button stw = new Button("");
             lawnbutton(stw,999,330,100,100);
-            Button sth = new Button("6,3");
+            Button sth = new Button("");
             lawnbutton(sth,999,450,100,100);
-            Button sf = new Button("6,4");
+            Button sf = new Button("");
             lawnbutton(sf,999,560,100,100);
-            Button sez = new Button("7,0");
+            Button sez = new Button("");
             lawnbutton(sez,1100,100,100,100);
-            Button seo = new Button("7,1");
+            Button seo = new Button("");
             lawnbutton(seo,1100,215,100,100);
-            Button setw = new Button("7,2");
+            Button setw = new Button("");
             lawnbutton(setw,1100,330,100,100);
-            Button seth = new Button("7,3");
+            Button seth = new Button("");
             lawnbutton(seth,1100,450,100,100);
-            Button sef = new Button("7,4");
+            Button sef = new Button("");
             lawnbutton(sef,1100,560,100,100);
-            Button ez = new Button("8,0");
+            Button ez = new Button("");
             lawnbutton(ez,1200,100,100,100);
-            Button eo = new Button("8,1");
+            Button eo = new Button("");
             lawnbutton(eo,1200,215,100,100);
-            Button etw = new Button("8,2");
+            Button etw = new Button("");
             lawnbutton(etw,1200,330,100,100);
-            Button eth = new Button("8,3");
+            Button eth = new Button("");
             lawnbutton(eth,1200,450,100,100);
-            Button ef = new Button("8,4");
+            Button ef = new Button("");
             lawnbutton(ef,1200,560,100,100);
-
-            //zz.setStyle("-fx-background-color:transparent;");
-            //ng.setOnMouseEntered(e -> ng.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;\""));
-            //ng.setOnMouseExited(e -> ng.setStyle("-fx-background-color:transparent;");
-            //zz.setOnAction(e->{
-            //System.out.println("New game selected");
-            //stackPane.getChildren().add(p)
-            //});
 
             Group bgrpG = new Group();
             bgrpG.getChildren().add(zo);
@@ -397,11 +376,9 @@ public class Main extends Application {
 
             pG.getChildren().add(bgrpG);
 
-            Button sun = new Button();
-
             stackPaneG.getChildren().addAll(iv1G,pG);
 
-            Button pauseMenu = new Button("Menu");
+            Button pauseMenu = new Button("");
             pauseMenu.setLayoutX(1175);
             pauseMenu.setLayoutY(0);
             pauseMenu.setPrefSize(160,27);
@@ -413,15 +390,14 @@ public class Main extends Application {
 
             });
 
-
             Pane p = new Pane(); //pane with 3 buttons (Main Menu)
-            Image image1 = new Image("MainMenu.jpg", 1350, 800, false, false);
+            Image image1 = new Image("file:MainMenu.jpg", 1350, 800, false, false);
             ImageView iv1 = new ImageView();
             iv1.setImage(image1);
             iv1.setPreserveRatio(true);
 
             Pane p2 = new Pane(); //pane with text box and buttons for new name
-            Image image2 = new Image("Enter_Name.jpg", 500, 300, false, false);
+            Image image2 = new Image("file:Enter_Name.jpg", 500, 300, false, false);
             ImageView iv2 = new ImageView();
             iv2.setX(430);
             iv2.setY(200);
@@ -431,15 +407,12 @@ public class Main extends Application {
             eName.setLayoutX(468);
             eName.setLayoutY(360);
             eName.setPrefWidth(420);
-            Button NmOk = new Button("OK");
-            Button NmCancel = new Button("CANCEL");
+            Button NmOk = new Button("");
+            Button NmCancel = new Button("");
             ButtonFormat(NmOk,470,440,190,35);
             NmOk.setOnAction(e -> {
                 System.out.println("OK selected");
                 stackPane.getChildren().remove(p2);
-                /*stage.setScene(scene2);
-                bullettrans.play();
-                translateTransition.play();*/
             });
             ButtonFormat(NmCancel,700,440,190,35);
             NmCancel.setOnAction(e -> {
@@ -453,16 +426,16 @@ public class Main extends Application {
             p2.getChildren().add(NmCancel);
 
             Pane p3 = new Pane();
-            Image image3 = new Image("ChooseLevel.jpg", 1350, 700, false, false);
+            Image image3 = new Image("file:ChooseLevel.jpg", 1350, 700, false, false);
             ImageView iv3 = new ImageView();
             iv3.setImage(image3);
             p3.getChildren().add(iv3);
-            Button l1 = new Button("Level 1");
-            Button l2 = new Button("Level 2");
-            Button l3 = new Button("Level 3");
-            Button l4 = new Button("Level 4");
-            Button l5 = new Button("Level 5");
-            Button back = new Button("Back");
+            Button l1 = new Button("");
+            Button l2 = new Button("");
+            Button l3 = new Button("");
+            Button l4 = new Button("");
+            Button l5 = new Button("");
+            Button back = new Button("");
             ButtonFormat(l1,45,57,250,180);
             ButtonFormat(l2,347,57,250,180);
             ButtonFormat(l3,663,57,250,180);
@@ -482,31 +455,27 @@ public class Main extends Application {
             stackPane.getChildren().addAll(iv1, p, p2);
 
             Pane p4=new Pane();
-            Image image4 = new Image("savedFiles.jpg", 1350, 700, false, false);
+            Image image4 = new Image("file:savedFiles.jpg", 1350, 700, false, false);
             ImageView iv4 = new ImageView();
             iv4.setImage(image4);
             p4.getChildren().add(iv4);
-            Button backSaved = new Button("Back");
+            Button backSaved = new Button("");
             ButtonFormat(backSaved,580,594,205,50);
             backSaved.setOnAction(e->{
                 stackPane.getChildren().remove(p4);
             });
             p4.getChildren().add(backSaved);
 
-
-
-            Button chLev = new Button("Select Level");
-            Button ng = new Button("New Game");
-            Button lg = new Button("Load Game");
-            Button ex = new Button("Exit");
+            Button chLev = new Button("");
+            Button ng = new Button("");
+            Button lg = new Button("");
+            Button ex = new Button("");
             ButtonFormat(chLev,715,98,485,85);
             chLev.setOnAction(e -> {
                 System.out.println("Choose level selected");
                 stackPane.getChildren().add(p3);
             });
             ButtonFormat(ng,720,245,455,80);
-            //ng.setOnMouseEntered(e -> ng.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;\""));
-            //ng.setOnMouseExited(e -> ng.setStyle("-fx-background-color:transparent;");
             ng.setOnAction(e -> {
                 System.out.println("New game selected");
                 stage.setScene(scene2);
@@ -514,7 +483,6 @@ public class Main extends Application {
                 translateTransition.play();
                 s.play();
                 transition.play();
-
             });
             ButtonFormat(lg,720,350,445,70);
             lg.setOnAction(e -> {
@@ -536,12 +504,9 @@ public class Main extends Application {
 
             p.getChildren().add(bgrp);
 
-
             stage.setTitle("Plants Vs Zombies");
             stage.setScene(scene1);
             stage.show();
-
-
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
