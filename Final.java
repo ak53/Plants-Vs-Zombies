@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.util.Duration;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Main extends Application {
 
     PathTransition transition;
@@ -47,8 +50,9 @@ public class Main extends Application {
             iv1G.setImage(image1G);
 
             Pane p2G = new Pane();
-            Image image2G = new Image("file:pauseMenu.png", 1350,800,false,false);
+            Image image2G = new Image("file:pauseMenu.png", 1100,800,false,false);
             ImageView iv2G = new ImageView();
+            iv2G.setX(160);
             iv2G.setImage(image2G);
             iv2G.setPreserveRatio(true);
             p2G.getChildren().add(iv2G);
@@ -57,7 +61,7 @@ public class Main extends Application {
             NumSuns.setText("50");
             pG.getChildren().add(NumSuns);
             NumSuns.setLayoutX(50);
-            NumSuns.setLayoutY(90);
+            NumSuns.setLayoutY(87);
 
             Rectangle timer = new Rectangle();
             timer.setHeight(15);
@@ -66,9 +70,10 @@ public class Main extends Application {
             timer.setY(12);
             timer.setFill(Color.GREENYELLOW);
             pG.getChildren().add(timer);
+            Timer animTimer = new Timer();
 
             Group root = new Group();
-            Button btn = new Button("Sun");
+            Button btn = new Button("");
             btn.setLayoutX(700);
             btn.setLayoutY(0);
             btn.setPrefSize(70,70);
@@ -146,7 +151,7 @@ public class Main extends Application {
             //Creating Translate Transition
             TranslateTransition translateTransition = new TranslateTransition();
             //Setting the duration of the transition
-            translateTransition.setDuration(Duration.seconds(39));
+            translateTransition.setDuration(Duration.seconds(35));
             //Setting the node for the transition
             translateTransition.setNode(ivzom);
             translateTransition.setFromX(1270);
@@ -163,13 +168,24 @@ public class Main extends Application {
             //Creating Translate Transition
             TranslateTransition tT = new TranslateTransition();
             //Setting the duration of the transition
-            tT.setDuration(Duration.seconds(39));
+            tT.setDuration(Duration.seconds(35));
             //Setting the node for the transition
             tT.setNode(ivzom2);
             tT.setFromX(1270);
             tT.setFromY(120);
             //Setting the value of the transition along the x axis.
             tT.setByX(-910);
+
+            // instantiating the Rotate class.
+            Rotate rotate = new Rotate(0,90,170);
+            ivzom2.getTransforms().add(rotate);
+            //rotate.setPivotX(0);
+            //rotate.setPivotY(170);
+            //ivzom2.getTransforms().add(rotate);
+            
+            tT.setOnFinished(e->{
+                rotate.setAngle(90);
+            });
 
             Image lawnMover = new Image("file:LawnMower.png",100,70,false,false);
             ImageView lm = new ImageView();
@@ -188,32 +204,36 @@ public class Main extends Application {
             moverTrans.setFromY(230);
             moverTrans.setToX(1400);
 
+            moverTrans.setOnFinished(e->{
+                pG.getChildren().remove(ivzom2);
+            });
+
             //Playing the animation
             SequentialTransition s =
                     new SequentialTransition(tT,moverTrans);
 
             Button save = new Button("");
-            save.setLayoutX(500);
+            save.setLayoutX(558);
             save.setLayoutY(375);
-            save.setPrefSize(330,37);
+            save.setPrefSize(280,37);
             save.setStyle("-fx-background-color:transparent;");
             save.setOnAction(e->{
                 System.out.println("Save selected");
             });
 
             Button restart = new Button("");
-            restart.setLayoutX(500);
+            restart.setLayoutX(558);
             restart.setLayoutY(430);
-            restart.setPrefSize(330,37);
+            restart.setPrefSize(280,37);
             restart.setStyle("-fx-background-color:transparent;");
             restart.setOnAction(e->{
                 System.out.println("Restart selected");
             });
 
             Button exit = new Button("");
-            exit.setLayoutX(500);
-            exit.setLayoutY(495);
-            exit.setPrefSize(330,30);
+            exit.setLayoutX(558);
+            exit.setLayoutY(490);
+            exit.setPrefSize(280,37);
             exit.setStyle("-fx-background-color:transparent;");
             exit.setOnAction(e->{
                 System.out.println("Exit to main menu selected");
@@ -222,9 +242,9 @@ public class Main extends Application {
             });
 
             Button resume = new Button("");
-            resume.setLayoutX(400);
-            resume.setLayoutY(565);
-            resume.setPrefSize(500,88);
+            resume.setLayoutX(465);
+            resume.setLayoutY(575);
+            resume.setPrefSize(447,88);
             resume.setStyle("-fx-background-color:transparent;");
             resume.setOnAction(e->{
                 System.out.println("Resume selected");
@@ -443,6 +463,7 @@ public class Main extends Application {
             ButtonFormat(l5,537,260,250,180);
             ButtonFormat(back,580,594,205,50);
             back.setOnAction(e->{
+                System.out.println("Back Selected");
                 stackPane.getChildren().remove(p3);
             });
             p3.getChildren().add(l1);
@@ -462,6 +483,7 @@ public class Main extends Application {
             Button backSaved = new Button("");
             ButtonFormat(backSaved,580,594,205,50);
             backSaved.setOnAction(e->{
+                System.out.println("Back Selected");
                 stackPane.getChildren().remove(p4);
             });
             p4.getChildren().add(backSaved);
@@ -479,6 +501,21 @@ public class Main extends Application {
             ng.setOnAction(e -> {
                 System.out.println("New game selected");
                 stage.setScene(scene2);
+                //if(!pG.getChildren().contains(ivzom2))  pG.getChildren().add(ivzom2);
+                timer.setWidth(50);
+                animTimer.scheduleAtFixedRate(new TimerTask() {
+                    int i=0;
+                    @Override
+                    public void run() {
+                        if (i<80) {
+                            timer.setWidth(timer.getWidth()+2);
+                        } else {
+                            this.cancel();
+                        }
+                        i++;
+                    }
+                }, 1000, 500);
+                rotate.setAngle(0);
                 bullettrans.play();
                 translateTransition.play();
                 s.play();
@@ -492,6 +529,7 @@ public class Main extends Application {
             ButtonFormat(ex,730,455,400,60);
             ex.setOnAction(e -> {
                 System.out.println("Exit selected");
+                animTimer.cancel();
                 stage.close();
             });
 
