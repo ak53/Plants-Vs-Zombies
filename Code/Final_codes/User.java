@@ -3,7 +3,7 @@ package sample;
 import java.util.HashMap;
 
 public class User {
-    public static HashMap<String, User> Users = new HashMap<String, User>();
+    public static HashMap<String, User> Users = new HashMap<String, User>(); // List of all users. Facade wala pattern lagaya hai
     String Name;
 
     public static User getInstance(String s){
