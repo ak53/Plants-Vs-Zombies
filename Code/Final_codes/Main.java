@@ -20,6 +20,7 @@ import java.util.TimerTask;
 
 public class Main extends Application {
 
+    public User Player;
     PathTransition transition;
 
     public void lawnbutton(Button b, double posx, double posy, double sx, double sy){
@@ -422,8 +423,15 @@ public class Main extends Application {
             ButtonFormat(NmOk,470,440,190,35);
             NmOk.setOnAction(e -> {
                 System.out.println("OK selected");
-                User.getInstance(eName.getText()); //Makes a new user if not found, else
-                stackPane.getChildren().remove(p2);
+                if(!eName.getText().equals("")) {
+                    Player = User.getInstance(eName.getText()); //Makes a new user if not found, else
+                    stackPane.getChildren().remove(p2);
+                    TextField nameplate = new TextField("Hi " + Player.getName());
+                    nameplate.setLayoutX(80);
+                    nameplate.setLayoutY(210);
+                    nameplate.setPrefWidth(420);
+                    p.getChildren().add(nameplate);
+                }
             });
             ButtonFormat(NmCancel,700,440,190,35);
             NmCancel.setOnAction(e -> {
@@ -485,6 +493,7 @@ public class Main extends Application {
             //////////////////////////////////////////////////////////////////////////////////////
 
             /////////////////////////////////////////// MAIN MENU ///////////////////////////////////
+
             Button chLev = new Button("");
             Button ng = new Button("");
             Button lg = new Button("");
@@ -538,6 +547,7 @@ public class Main extends Application {
             bgrp.setRotate(7);
 
             p.getChildren().add(bgrp);
+
             ///////////////////////////////////////////////////////////////////////////////////////////
 
             stage.setTitle("Plants Vs Zombies");
