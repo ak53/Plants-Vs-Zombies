@@ -1,3 +1,5 @@
+package sample;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -64,8 +66,7 @@ public class Lawn extends Application {
 
             case "pea":
                 if(p>1){
-                    p=0;
-                    System.out.println("moving");
+//                    System.out.println("moving");
                     c.moveRight();
                     if (c.getTranslateX()>1350){
                         root.getChildren().remove(c);
@@ -76,7 +77,7 @@ public class Lawn extends Application {
 //                            c.dead=true;
                             root.getChildren().remove(enemy);
                             root.getChildren().remove(c);
-                            System.out.println("tata");
+//                            System.out.println("tata");
 
                         }});
                 }
@@ -85,11 +86,10 @@ public class Lawn extends Application {
 
             case "plant":
                 if (t>5){
-                    t=0;
                     chars().stream().filter(ch-> ch.type.equals("zombie")).forEach(cha->{
                         if (c.getClass()==new PeaShooter(0,0,0,0,"Plant").getClass() && (int)cha.getTranslateY()==(int)c.getTranslateY()){
                             PeaShooter p = (PeaShooter) c;
-                            System.out.println("heya");
+//                            System.out.println("heya");
                             p.shoot();
                         }
                     });
@@ -105,9 +105,12 @@ public class Lawn extends Application {
 //            Characters c=(Characters) n;
 //            return c.dead;
 //        });
-//        if (t>2){
-//            t=0;
-//        }
+        if (t>5){
+            t=0;
+        }
+        if (p>1){
+            p=0;
+        }
     }
 
     @Override
