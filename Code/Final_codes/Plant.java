@@ -1,15 +1,16 @@
 package sample;
-
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public abstract class Plant extends Characters{
     int reqSun;
     int replantTime;
 
-    public Plant(int x,int y,int h,int w,String type) {
+    public Plant(int x, int y, int h, int w, String type) {
         super(x,y,h,w,"plant");
 
     }
+
 
     public boolean isAvailable(){
         return true;
@@ -19,6 +20,7 @@ public abstract class Plant extends Characters{
 class Sunflower extends Plant{
     public Sunflower(int x, int y, int h, int w, String type) {
         super(x, y, h, w, type);
+        this.setImage(new Image("Pea.gif",90,100,false,false));
     }
 
     public void EmitSun(){
@@ -30,12 +32,14 @@ class Walnut extends Plant{
 
     public Walnut(int x, int y, int h, int w, String type) {
         super(x, y, h, w, type);
+        this.setImage(new Image("walnut.png",90,100,false,false));
     }
 }
 
 class PotatoMine extends Plant{
     public PotatoMine(int x, int y, int h, int w, String type) {
         super(x, y, h, w, type);
+        this.setImage(new Image("potatomine.png",90,100,false,false));
     }
 
     public void explode(){
@@ -51,11 +55,13 @@ class PeaShooter extends Plant{
 
     public PeaShooter(int x, int y, int h, int w, String type) {
         super(x, y, h, w, type);
+        this.setImage(new Image("Pea.gif",90,100,false,false));
     }
 
-    public void shoot(Plant who){
-        Characters c=new Characters((int)who.getTranslateX()+20,(int)who.getTranslateY(),20,5,who.type+"pea");
-        Lawn.root.getChildren().add(c);
+    public void shoot(){
+        Pea p=new Pea((int)this.getTranslateX()+20,(int)this.getTranslateY(),20,5,"pea");
+        System.out.println("boooo");
+        Lawn.root.getChildren().add(p);
     }
 }
 
@@ -63,5 +69,6 @@ class Repeater extends PeaShooter{
 
     public Repeater(int x, int y, int h, int w, String type) {
         super(x, y, h, w, type);
+        this.setImage(new Image("repeater.png",90,100,false,false));
     }
 }
