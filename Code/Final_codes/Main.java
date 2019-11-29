@@ -40,67 +40,7 @@ public class Main extends Application {
     public void start(Stage S) {
         try {
             stage = S;
-
-            /*TranslateTransition bullettrans = new TranslateTransition();
-            bullettrans.setDuration(Duration.seconds(7));
-            bullettrans.setNode(ivpb);
-            bullettrans.setFromX(415);
-            bullettrans.setFromY(100);
-            bullettrans.setToX(1400);*/
-
-            /*Image plimg = new Image("file:Pea.gif",90,100,false,false);
-            ImageView ivpl = new ImageView();
-            ivpl.setImage(plimg);
-            ivpl.setPreserveRatio(true);
-            ivpl.relocate(400,80);
-            Lawn.root.getChildren().add(ivpl);*/
-
-            /*Image zomimg = new Image("file:Zombie.gif",90,170,false,false);
-            ImageView ivzom = new ImageView();
-            ivzom.setImage(zomimg);
-            ivzom.setPreserveRatio(true);
-            //ivzom.relocate(1155,60);
-            Lawn.root.getChildren().add(ivzom);
-            TranslateTransition translateTransition = new TranslateTransition();
-            translateTransition.setDuration(Duration.seconds(35));
-            translateTransition.setNode(ivzom);
-            translateTransition.setFromX(1270);
-            translateTransition.setFromY(20);
-            translateTransition.setByX(-910);*/
-
-            /*Image zom2 = new Image("file:Zombie.gif",90,170,false,false);
-            ImageView ivzom2 = new ImageView();
-            ivzom2.setImage(zom2);
-            ivzom2.setPreserveRatio(true);
-            //ivzom.relocate(1155,60);
-            Lawn.root.getChildren().add(ivzom2);
-            TranslateTransition tT = new TranslateTransition();
-            tT.setDuration(Duration.seconds(35));
-            tT.setNode(ivzom2);
-            tT.setFromX(1270);
-            tT.setFromY(120);
-            tT.setByX(-910);
-
-            Rotate rotate = new Rotate(0,90,170);
-            ivzom2.getTransforms().add(rotate);
-            //rotate.setPivotX(0);
-            //rotate.setPivotY(170);
-            //ivzom2.getTransforms().add(rotate);
-
-            tT.setOnFinished(e->{
-                rotate.setAngle(90);
-            });*/
-
-
-            /*TranslateTransition moverTrans = new TranslateTransition();
-            moverTrans.setDuration(Duration.seconds(7));
-            moverTrans.setNode(lm);
-            moverTrans.setFromX(310);
-            moverTrans.setFromY(230);
-            moverTrans.setToX(1400);*/
-
-            //SequentialTransition s = new SequentialTransition(tT);
-
+            
             new Lawn().LawnLayout();
             InGameMenu.Screen();
             MainMenu.DisplayMenu();
