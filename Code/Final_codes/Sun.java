@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.animation.PathTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -12,17 +13,24 @@ import javafx.util.Duration;
 
 public class Sun {
     static int Value = 25;
+    Lawn l;
+    int x;
+    int y;
+    Group sungrp;
+    Sun(int x, int y,Lawn l){
+        this.x = x;
+        this.y = y;
+        sungrp= new Group();
+        this.l = l;
+    }
 
-    Group sungrp = new Group();
-    public void appear(int x, int y){
+    public void appear(){
         Button btn = new Button("");
         btn.setLayoutX(x);
         btn.setLayoutY(y);
         btn.setPrefSize(70,70);
         btn.setStyle("-fx-background-color:transparent;");
-        btn.setOnAction(e->{
-            System.out.println("Sun selected");
-        });
+
 
         Image imageSun = new Image("file:sun.png", 70,70,false,false);
         ImageView imsun = new ImageView();
@@ -31,27 +39,39 @@ public class Sun {
         imsun.relocate(x,y);
         sungrp.getChildren().add(imsun);
         sungrp.getChildren().add(btn);
-        Lawn.root.getChildren().add(sungrp);
+        this.l.root.getChildren().add(sungrp);
+
+        btn.setOnAction(e->{
+            System.out.println("Sun selected");
+            this.l.sunToken+=25;
+            this.l.NumSuns.setText(Integer.toString(l.sunToken));
+            this.l.root.getChildren().remove(sungrp);
+            sungrp.setLayoutX(2000);
+        });
     }
-    public void disappear(){
+    /*public void disappear(){
 
     }
     public void collected(){
 
-    }
+    }*/
 }
 
 class FallingSun extends Sun{
     static int FallSpeed;
-    static PathTransition transition;
+    FallingSun(int x, int y, Lawn l)
+    {
+        super(x, y, l);
+    }
+
+    //static PathTransition transition;
     public void Fall(){
-        appear(700,0);
-        transition = new PathTransition();
-        transition.setNode(sungrp);
-        transition.setDuration(Duration.seconds(10));
-        Path path = new Path();
-        path.getElements().add(new MoveTo(700, 20));
-        path.getElements().add(new LineTo(700, 800));
-        transition.setPath(path);
+        appear();
+        TranslateTransition translateTransition = new TranslateTransition();
+        translateTransition.setDuration(Duration.seconds(10));
+        translateTransition.setNode(sungrp);
+        translateTransition.setFromY(20);
+        translateTransition.setByY(400);
+        translateTransition.play();
     }
 }
